@@ -8,38 +8,43 @@ Created on Thu Mar 17 11:59:04 2022
 from h3ds.dataset import H3DS
 import os
 
-# Load dataset
+# Load dataset and view configurations
 h3ds = H3DS(path='h3ds_v0.2')
+scene = '0cd3f3c0bc34a287'
+views_configs = h3ds.default_views_configs(scene_id=scene) # '3', '4', '8', '16' and '32'
 
+# Different views
+shots = ['3', '4', '8', '16', '32']
 
-# Check different views
-views_configs = h3ds.default_views_configs(scene_id='0cd3f3c0bc34a287') # '3', '4', '8', '16' and '32'
+scan = 1
+for view_id in shots:
+    # Load data of given scene and view configuration
+    _, images, masks, cameras = h3ds.load_scene(scene_id=scene, views_config_id=view_id, normalized=False)
 
-# Load data of given scene and view configuration
-_, images, masks, cameras = h3ds.load_scene(scene_id='0cd3f3c0bc34a287', views_config_id='8', normalized=False)
+    folder = 'scan' + str(scan)
+    our_dataset = 'OWN_DATA/'
 
-
-folder = 'scan1'
-
-# Creates a directory to save the data
-if not os.path.isdir(folder):
-    os.mkdir(folder) 
-
-# Creates a directory to save the data
-if not os.path.isdir(folder + '/image'):
-    os.mkdir(folder + '/image') 
-
-# Save images
-for n, image in enumerate(images):
-    image.save(folder + '/image/img_000' + str(n) + '.jpg')
+    # Creates a directory to save the data
+    if not os.path.isdir(our_dataset + folder):
+        os.mkdir(our_dataset + folder) 
     
-# Creates a directory to save the data
-if not os.path.isdir(folder + '/mask'):
-    os.mkdir(folder + '/mask') 
-
-# Save masks
-for n, mask in enumerate(masks):
-    mask.save(folder + '/mask/mask_000' + str(n) + '.jpg')
+    # Creates a directory to save the data
+    if not os.path.isdir(our_dataset + folder + '/image'):
+        os.mkdir(our_dataset + folder + '/image') 
+    
+    # Save images
+    for n, image in enumerate(images):
+        image.save(our_dataset + folder + '/image/img_000' + str(n) + '.jpg')
+        
+    # Creates a directory to save the data
+    if not os.path.isdir(our_dataset + folder + '/mask'):
+        os.mkdir(our_dataset + folder + '/mask') 
+    
+    # Save masks
+    for n, mask in enumerate(masks):
+        mask.save(our_dataset + folder + '/mask/mask_000' + str(n) + '.jpg')
+    
+    scan += 1
     
 
     
