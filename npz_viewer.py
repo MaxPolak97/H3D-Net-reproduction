@@ -8,10 +8,10 @@ Created on Thu Mar 17 13:04:01 2022
 import numpy as np
 
 # IDR format
-data = np.load('DTU/scan65/cameras.npz')
+data = np.load('IDR/data/DTU/scan65/cameras.npz')
 
-# for keys in data.files:
-#     print(keys)
+for keys in data.files:
+    print(keys)
     
 print(data['world_mat_0'])
 print(data['camera_mat_inv_0'])

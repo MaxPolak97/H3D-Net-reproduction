@@ -243,8 +243,9 @@ class H3DS:
         images = self.load_images(scene_id, views_config_id)
         masks = self.load_masks(scene_id, views_config_id)
         cameras = self.load_cameras(scene_id, views_config_id, normalized)
+        OWN_cameras = self.load_OWN_cameras(scene_id, views_config_id)
 
-        return mesh, images, masks, cameras
+        return mesh, images, masks, cameras, OWN_cameras
 
     def load_mesh(self, scene_id: str, normalized: bool = False):
         """
@@ -318,6 +319,23 @@ class H3DS:
             cameras.append((K, P))
 
         return self._filter_views(cameras, scene_id, views_config_id)
+    
+    def load_OWN_cameras(self,
+                     scene_id: str,
+                     views_config_id: str = None):
+        
+        camera_dict = np.load(self.helper.scene_cameras(scene_id))
+        normalization_transform = self._load_normalization_transform(scene_id)
+        
+        cameras = []
+        for idx in range(self._config['scenes'][scene_id]['views']):
+            world_mat = camera_dict['world_mat_%d' % idx].astype(np.float32)
+            scale_mat = camera_dict['scale_mat_%d' % idx].astype(np.float32)
+            camera_mat_inv = world_mat @ np.linalg.inv(normalization_transform.matrix)
+            
+            cameras.append((world_mat, scale_mat, camera_mat_inv))
+    
+        return self._filter_views_own(cameras, scene_id, views_config_id)
 
     def load_landmarks(self, scene_id: str):
         """
@@ -472,3 +490,29 @@ class H3DS:
 
         views_config = self._get_views_config(scene_id, views_config_id)
         return [elements[idx] for idx in views_config]
+    
+    
+    def _filter_views_own(self,
+                      elements,
+                      scene_id: str,
+                      views_config_id: str = None):
+        """
+        Internal method: Filters a list of objects associated to views (images, cameras)
+        according to a scene and a configuration of views.
+        Args:
+            elements (list): List of all the images, masks or cameras from a scene
+        Returns:
+            list : Filtered list of elements that belong to the views defined by views_config_id
+        """
+
+        views_config = self._get_views_config(scene_id, views_config_id)
+        
+        dict_views = {}
+        for idx in views_config:
+            dict_views['world_mat_' + str(idx)] = elements[idx][0]
+            dict_views['scale_mat_' + str(idx)] =  elements[idx][1]
+            dict_views['camera_mat_inv_' + str(idx)] =  elements[idx][2]
+        
+        return dict_views
+        
+    
