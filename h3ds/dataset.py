@@ -508,10 +508,10 @@ class H3DS:
         views_config = self._get_views_config(scene_id, views_config_id)
         
         dict_views = {}
-        for idx in views_config:
-            dict_views['world_mat_' + str(idx)] = elements[idx][0]
-            dict_views['scale_mat_' + str(idx)] =  elements[idx][1]
-            dict_views['camera_mat_inv_' + str(idx)] =  elements[idx][2]
+        for i,idx in enumerate(views_config):
+            dict_views['world_mat_' + str(i)] = elements[idx][0]
+            dict_views['scale_mat_' + str(i)] =  elements[idx][1]
+            dict_views['camera_mat_inv_' + str(i)] =  elements[idx][2]
         
         return dict_views
         
