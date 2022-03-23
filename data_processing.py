@@ -12,6 +12,7 @@ import os
 # Load dataset and view configurations
 h3ds = H3DS(path='h3ds_v0.2')
 scene = '0cd3f3c0bc34a287'
+scenes = h3ds.scenes(tags={'h3d-net'}) # returns the scenes used in H3D-Net paper
 views_configs = h3ds.default_views_configs(scene_id=scene) # '3', '4', '8', '16' and '32'
 
 # Different views

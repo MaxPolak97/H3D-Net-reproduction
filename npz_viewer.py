@@ -8,7 +8,8 @@ Created on Thu Mar 17 13:04:01 2022
 import numpy as np
 
 # IDR format
-data = np.load('IDR/data/DTU/scan65/cameras.npz')
+#data = np.load('IDR/data/DTU/scan65/cameras.npz')
+data = np.load('IDR/data/H3D/view3/scan6/cameras.npz')
 
 for keys in data.files:
     print(keys)
