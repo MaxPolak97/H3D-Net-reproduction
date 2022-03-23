@@ -27,7 +27,15 @@ shots = ['3', '4', '8', '16', '32']
 # iteration
 #scan = 1
 our_dataset = 'OWN_DATA'
+if not os.path.isdir(our_dataset):
+    os.makedirs(our_dataset)
 
+list_dir = our_dataset + '/scan_list.txt'
+scan_list = open(list_dir, 'w')
+for scan, scene in enumerate(scene_list):
+    scan_list.write("scan" + str(scan) + ":" + str(scene) + "\n")
+    scan_list.flush()
+    
 for view_id in shots:
     # Create a directory to save the data
     view_folder = our_dataset + '/view' + view_id
