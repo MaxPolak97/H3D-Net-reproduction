@@ -129,7 +129,7 @@ dmypy.json
 .pyre/
 
 #exps*
-evals*
+#evals*
 data/DTU
 data/Fountain
 
