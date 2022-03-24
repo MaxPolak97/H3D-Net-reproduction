@@ -128,8 +128,8 @@ dmypy.json
 # Pyre type checker
 .pyre/
 
-#exps*
-evals*
+exps*
+#evals*
 data/DTU
 data/Fountain
 
