@@ -54,6 +54,7 @@ coverage.xml
 # Translations
 *.mo
 *.pot
+*.out
 
 # Django stuff:
 *.log
@@ -128,8 +129,8 @@ dmypy.json
 # Pyre type checker
 .pyre/
 
-#exps*
-evals*
+exps*
+#evals*
 data/DTU
 data/Fountain
 
