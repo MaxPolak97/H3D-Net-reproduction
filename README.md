@@ -16,6 +16,10 @@ In order to reproduce the results from Table 2, we will first start by implement
 Once implemented we will move on to the DeepSDF method described in paper 2, followed by the actual H3D-Net implementation. 
 
 One thing to note is that by the end of this reproducibility project we will have reimplemented methods described in 3 different papers, which is a condsidereable amount of work given the short amount of time allocated. (4-5 weeks).
+
+## Google Cloud Platform
+
+bla bla
  
 ## IDR Method
 
@@ -52,10 +56,22 @@ Now we have a means of working with the H3DS Dataset.
 
 `data_processing.py` uses the H3DS Dataset and organises the `images`, `masks` and `cameras.npz` files into different `views` (3, 4, 8, 16, 32). 
 
-After running this python file, we are left with a folder called `OWN_DATA`, which contains folders with `view_ids`, which each contain the respective `images`, `masks` and `cameras.npz` files needed as shown in the `h3ds-main/h3ds/config.toml` file. This was done so that we could train different idr models when given different `views`.
+After running this python file, we are left with a folder called `OWN_DATA`, which contains folders with `view_ids`, which each contain all the `scan_id` folders, which each contain the respective `images`, `masks` and `cameras.npz` files for that scene. The data was split as shown in the `h3ds-main/h3ds/config.toml` file. This was done so that we could train different idr models when given different `views`.
 
 #### H3D_fixed_cameras_X.conf
 
 `H3D_fixed_cameras_X.conf` where `X` = `views` (3, 4, 8, 16, 32). These 5 files were added to `IDR/code/confs/` as the H3DS image resolution was different to the original `DTU Dataset` used in the idr paper 1. This file also redirects the training data to our `OWN_DATA`.
+
+We are now ready to train on the different views. In order to train, we used the following code:
+
+```
+cd ./code
+python training/exp_runner.py --conf ./confs/H3D_fixed_cameras_X.conf --scan_id SCAN_ID
+```
+Where `SCAN_ID` is the scan number shown within each `view_id`. The link between `scan_id` and `scene_id` can be found in `OWN_DATA/scan_list.txt`. 
+
+
+
+
 
 
