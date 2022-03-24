@@ -7,8 +7,8 @@ scan5:34f084f75deb512f
 scan6:3b5a2eb92a501d54 - 2 Alon
 scan7:444ea0dc5e85ee0b - 6
 scan8:52cfbad69cd83924
-scan9:5ae021f2805c0854 - 3
-scan10:5cd49557ea450c89 - 4
+scan9:5ae021f2805c0854 - 3 Denniz
+scan10:5cd49557ea450c89 - 4 Max
 scan11:5d0e87f3adb80226
 scan12:609cc60fd416e187 - 7
 scan13:664fdf322e1dd436
