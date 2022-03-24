@@ -57,6 +57,10 @@ git clone https://github.com/CrisalixSA/h3ds
 
 Now we have a means of working with the H3DS Dataset.
 
+#### Download the dataset
+You can download the H3DS dataset from [this link](https://drive.google.com/file/d/1is1AByaMwaWJJN6CwQ4MmeqCHIMiijZw/view?usp=sharing).
+Then, unzip the file using the `H3DS_ACCESS_TOKEN` as password. Place the dataset in H3D-Net-reproduction/h3ds_v0.2.
+
 #### data_processing.py
 
 `data_processing.py` uses the H3DS Dataset and organises the `images`, `masks` and `cameras.npz` files into different `views` (3, 4, 8, 16, 32). 
