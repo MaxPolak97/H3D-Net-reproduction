@@ -1,8 +1,6 @@
 # -*- coding: utf-8 -*-
 """
-Created on Thu Mar 17 11:59:04 2022
-
-@author: Maxpo
+This file regenerate the "h3ds_v0.2" dataset into a compatible format "OWN_DATA" used in the IDR dataset.
 """
 
 from h3ds.dataset import H3DS
