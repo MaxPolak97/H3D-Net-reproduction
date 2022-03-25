@@ -61,7 +61,10 @@ for view_id in shots:
     
         # Save images
         for n, image in enumerate(images):
-            image.save(scan_folder + '/image/img_000' + str(n) + '.jpg')
+            if n < 10:
+                prefix = 'img_000'
+            else: prefix = 'img_00'
+            image.save(scan_folder + '/image/' + prefix + str(n) + '.jpg')
         
         # Creates a directory to save the data
         if not os.path.isdir(scan_folder + '/mask'):
@@ -69,7 +72,10 @@ for view_id in shots:
     
         # Save masks
         for n, mask in enumerate(masks):
-            mask.save(scan_folder + '/mask/mask_000' + str(n) + '.jpg')
+            if n < 10:
+                prefix = 'mask_000'
+            else: prefix = 'mask_00'
+            mask.save(scan_folder + '/mask/' + prefix + str(n) + '.jpg')
     
         # save camera as npz file
         np.savez(scan_folder + '/cameras.npz', **cameras_OWN)  # data is a dict here

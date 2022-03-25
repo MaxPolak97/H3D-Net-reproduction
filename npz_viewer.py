@@ -47,5 +47,21 @@ mesh, images, masks, cameras, cameras_OWN = h3ds.load_scene(scene_id='3b5a2eb92a
 #print("Reproduced Cameras file: ", cameras_OWN)
 
 loaded_cameras = np.load('h3ds_v0.2/3b5a2eb92a501d54/cameras.npz')
+loaded_cameras_OWN = np.load('OWN_DATA/view3/scan6/cameras.npz')
 
-print(loaded_cameras)
+scale_mats_original = [loaded_cameras['scale_mat_%d' % idx].astype(np.float32) for idx in range(3)]
+world_mats_original = [loaded_cameras['world_mat_%d' % idx].astype(np.float32) for idx in range(3)]
+
+scale_mats_OWN = [loaded_cameras_OWN['scale_mat_%d' % idx].astype(np.float32) for idx in range(3)]
+world_mats_OWN = [loaded_cameras_OWN['world_mat_%d' % idx].astype(np.float32) for idx in range(3)]
+
+
+
+
+print("Original Scale Mat:", scale_mats_original)
+print("Own Scale Mat:", scale_mats_OWN)
+
+print("Original World Mat:", world_mats_original)
+print("Own World Mat:", world_mats_OWN)
+
+
