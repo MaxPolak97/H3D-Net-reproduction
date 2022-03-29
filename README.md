@@ -97,3 +97,53 @@ python evaluation/eval.py  --conf ./confs/H3D_fixed_cameras_X.conf --scan_id SCA
 - Use a 15GB GPU resulted in allocated memory issues and while we tried everything, a simple was to use a 30GB GPU. 
 - In manipulating the data we made an erorr assigning the correct name of the images (e.g. img_0001 --> img_0010 not img_00010). We had to generate the data all again and some had to do training over as well.
 
+### IDR Results
+
+<table>
+   <tr>
+      <th rowspan="2">Producer</th>
+      <th colspan="2">View3</th>
+      <th colspan="2">View4</th>
+      <th colspan="2">View8</th>
+      <th colspan="2">View16</th>
+      <th colspan="2">View32</th>
+   </tr>
+   <tr>
+      <th>face</th>
+      <th>head</th>
+      <th>face</th>
+      <th>head</th>
+      <th>face</th>
+      <th>head</th>
+      <th>face</th>
+      <th>head</th>
+      <th>face</th>
+      <th>head</th>
+   </tr>
+   <tr>
+      <td>Eduard</td>
+      <td>3.52</td>
+      <td>17.04</td>
+      <td>2.14</td>
+      <td>8.04</td>
+      <td>1.95</td>
+      <td>8.71</td>
+      <td>1.43</td>
+      <td>5.94</td>
+      <td>1.39</td>
+      <td>5.86</td>
+   </tr>
+   <tr>
+      <td>Ours</td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+   </tr>
+</table>
