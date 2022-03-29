@@ -1,3 +1,4 @@
+
 # H3D-Net-reproduction
 The goal of this blog post is to present and describe our implementation to reproduce the deep learning paper “H3D-Net: Few-Shot High-Fidelity 3D Head Reconstruction” using Pytorch. We are doing this for an assignment of the course CS4240 Deep Learning (2021/22 Q3) at Delft University of Technology. This paper introduces a new high-fidelity full 3D head reconstruction method called H3D-Net that outperforms state-of-the-art models, such as MVFNet, DFNRMVS and IDR, in the few-shot (3 views) scenario. The H3D-Net utilizes both DeepSDF (a learned shape prior) and IDR (fine-tuning details) to achieve fast high-fidelity 3D face reconstruction from 2D images with different views. Please check the papers for more background information about DeepSDF and IDR. Our approach attempts to reproduce the results of the last two rows of "Table 2: 3D Reconstruction Method Comparison" of the paper.
 
@@ -17,10 +18,13 @@ Once implemented we will move on to the DeepSDF method described in paper 2, fol
 
 One thing to note is that by the end of this reproducibility project we will have reimplemented methods described in 3 different papers, which is a condsidereable amount of work given the short amount of time allocated. (4-5 weeks).
 
+
 ## Google Cloud Platform
-For cloud computing, we used a single deeplearning vm instance  with GPU n1-standard-8 and memory of 30GB.   
+For cloud computing, we used a single deeplearning virtual machine instance with a Nvidia Tesla K80 GPU and a CPU with 30GB memory. A list of the specs of all the hardware from the virtual machine can be seen below. 
 
+<img src="README_images/hardware.png" alt="Hardware specs" width="400"/>
 
+To make the GPU findable by the software, the following has to be done:
 ```
 sudo su
 nvidia-smi -pm 1
@@ -47,7 +51,7 @@ Now everything should be setup.
 
 ### IDR Training
 
-In order to start training the H3DS Dataset, we had to apply for permission to use their dataset, in order to get the `H3DS_ACCESS_TOKEN`, and in order to use the H3DS dataset, we used the repository of Paper 3, in order to be able to manipulate the data.
+In order to start training the H3DS Dataset, we had to gain permission to use their H3DS dataset. After this, we manipulated their dataset 'h3ds_v0.2' to the correct format using `data_processing.py` which created a new dataset 'OWN_DATA' which is uded to create the conf file for each sample and all their views.
 
 We cloned repository 3 in the `idr-main` folder of this repository.
 
@@ -59,7 +63,7 @@ Now we have a means of working with the H3DS Dataset.
 
 #### Download the dataset
 You can download the H3DS dataset from the H3DNet paper [this link](https://drive.google.com/file/d/1is1AByaMwaWJJN6CwQ4MmeqCHIMiijZw/view?usp=sharing).
-Then, unzip the file using the `H3DS_ACCESS_TOKEN` as password. Place the dataset in H3D-Net-reproduction/h3ds_v0.2.
+Then, unzip the file using the `H3DS_ACCESS_TOKEN` as password. 
 
 #### data_processing.py
 
@@ -88,6 +92,60 @@ cd ./code
 python evaluation/eval.py  --conf ./confs/H3D_fixed_cameras_X.conf --scan_id SCAN_ID
 ```
 
+### IDR Results
 
+<table>
+   <tr>
+      <th rowspan="2">Producer</th>
+      <th colspan="2">View3</th>
+      <th colspan="2">View4</th>
+      <th colspan="2">View8</th>
+      <th colspan="2">View16</th>
+      <th colspan="2">View32</th>
+   </tr>
+   <tr>
+      <th>face</th>
+      <th>head</th>
+      <th>face</th>
+      <th>head</th>
+      <th>face</th>
+      <th>head</th>
+      <th>face</th>
+      <th>head</th>
+      <th>face</th>
+      <th>head</th>
+   </tr>
+   <tr>
+      <td>Eduard</td>
+      <td>3.52</td>
+      <td>17.04</td>
+      <td>2.14</td>
+      <td>8.04</td>
+      <td>1.95</td>
+      <td>8.71</td>
+      <td>1.43</td>
+      <td>5.94</td>
+      <td>1.39</td>
+      <td>5.86</td>
+   </tr>
+   <tr>
+      <td>Ours</td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+   </tr>
+</table>
+
+## Blunders we made on the run
+- Training and evaluating should have been done in order (or otherwise use the timestamp). Each sample with all their views take around 2 hours which had to be done again for some of us.
+- Use a 15GB GPU resulted in allocated memory issues and while we tried everything, a simple was to use a 30GB GPU. 
+- In manipulating the data we made an erorr assigning the correct name of the images (e.g. img_0001 --> img_0010 not img_00010). We had to generate the data all again and some had to do training over as well.
 
 
