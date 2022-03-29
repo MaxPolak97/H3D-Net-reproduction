@@ -18,8 +18,8 @@ Once implemented we will move on to the DeepSDF method described in paper 2, fol
 One thing to note is that by the end of this reproducibility project we will have reimplemented methods described in 3 different papers, which is a condsidereable amount of work given the short amount of time allocated. (4-5 weeks).
 
 ## Google Cloud Platform
+For cloud computing, we used a single deeplearning vm instance  with GPU n1-standard-8 and memory of 30GB.   
 
-bla bla
 
 ```
 sudo su
@@ -58,7 +58,7 @@ git clone https://github.com/CrisalixSA/h3ds
 Now we have a means of working with the H3DS Dataset.
 
 #### Download the dataset
-You can download the H3DS dataset from [this link](https://drive.google.com/file/d/1is1AByaMwaWJJN6CwQ4MmeqCHIMiijZw/view?usp=sharing).
+You can download the H3DS dataset from the H3DNet paper [this link](https://drive.google.com/file/d/1is1AByaMwaWJJN6CwQ4MmeqCHIMiijZw/view?usp=sharing).
 Then, unzip the file using the `H3DS_ACCESS_TOKEN` as password. Place the dataset in H3D-Net-reproduction/h3ds_v0.2.
 
 #### data_processing.py
