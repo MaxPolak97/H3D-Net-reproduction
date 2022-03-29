@@ -18,9 +18,11 @@ Once implemented we will move on to the DeepSDF method described in paper 2, fol
 One thing to note is that by the end of this reproducibility project we will have reimplemented methods described in 3 different papers, which is a condsidereable amount of work given the short amount of time allocated. (4-5 weeks).
 
 ## Google Cloud Platform
-For cloud computing, we used a single deeplearning vm instance  with GPU n1-standard-8 and memory of 30GB.   
+For cloud computing, we used a single deeplearning virtual machine instance with a Nvidia Tesla K80 GPU and a CPU with 30GB memory. A list of the specs of all the hardware from the virtual machine can be seen below. 
 
+<img src="README_images/hardware.png" alt="Hardware specs" width="400"/>
 
+To make the GPU findable by the software, the following has to be done:
 ```
 sudo su
 nvidia-smi -pm 1
