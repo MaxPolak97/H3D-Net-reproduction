@@ -92,11 +92,6 @@ cd ./code
 python evaluation/eval.py  --conf ./confs/H3D_fixed_cameras_X.conf --scan_id SCAN_ID
 ```
 
-## Blunders we made on the run
-- Training and evaluating should have been done in order (or otherwise use the timestamp). Each sample with all their views take around 2 hours which had to be done again for some of us.
-- Use a 15GB GPU resulted in allocated memory issues and while we tried everything, a simple was to use a 30GB GPU. 
-- In manipulating the data we made an erorr assigning the correct name of the images (e.g. img_0001 --> img_0010 not img_00010). We had to generate the data all again and some had to do training over as well.
-
 ### IDR Results
 
 <table>
@@ -147,3 +142,10 @@ python evaluation/eval.py  --conf ./confs/H3D_fixed_cameras_X.conf --scan_id SCA
       <td></td>
    </tr>
 </table>
+
+## Blunders we made on the run
+- Training and evaluating should have been done in order (or otherwise use the timestamp). Each sample with all their views take around 2 hours which had to be done again for some of us.
+- Use a 15GB GPU resulted in allocated memory issues and while we tried everything, a simple was to use a 30GB GPU. 
+- In manipulating the data we made an erorr assigning the correct name of the images (e.g. img_0001 --> img_0010 not img_00010). We had to generate the data all again and some had to do training over as well.
+
+
