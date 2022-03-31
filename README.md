@@ -11,6 +11,19 @@ The goal of this blog post is to present and describe our implementation to repr
 3. Paper describing H3D-Net method: https://crisalixsa.github.io/h3d-net/  
    - Repository for H3D-Net method: Source code is not available, only the code used to manipulate the H3DS Dataset has been supplied: https://github.com/CrisalixSA/h3ds
 
+## Introduction
+Learning 3D reconstructed shapes from 2D images is a fundamental computer vision problem. A recent successful neural network approach to solving this problem involves the use of a (neural) differentiable rendering system along with a choice of (neural) 3D geometry representation include point clouds, triangle meshes, implicit representations defined over voxel grids, and neural implicit representations. We will now disucss the current research and state-of-the-art 3D rendering methods.  
+
+### 1. Neural Radiance Field (NeRF)
+The NeRF algorithm represents a scene using a fully-connected deep neural network, whose input is a single continuous 5D coordinate (spatial location (x,y,z) and viewing direction (θ,ϕ)) and whose output is the volume density and view-dependent emitted radiance at that spatial location. We synthesize views by querying 5D coordinates along camera rays and use volume rendering techniques to project the output colors and densities into an image. Check code https://www.matthewtancik.com/nerf
+
+### 2. Implicit surface Differentiable Renderer (IDR)
+The IDR algorithm is a neural network architecture that simultaneously learns the following three unknowns: (1) the geometry of the scene (2) the unknown camera parameters (3) and the light and reflectance properties from the surface towards the camera approximated surface rendering technique. 
+
+Signed distance function (SDF) 
+It computes the shortest distance between a 3D point and some 2D surface as the zero-level-set where the magnitude of a point in the field represents the distance to the surface boundary and the sign indicates whether the region is inside (-) or outside (+) of the shape.
+
+
 ## Reproducibility Approach
 
 In order to reproduce the results from Table 2, we will first start by implementing the IDR method as described in Paper 1 using the H3DS dataset. We believe this will take a considereable amount of time to implement due to the large amount of training needed. Each scan_id (person's head) needs to be trained on for 3, 4, 8, 16, 32 views. The results from this implementation should give us the second last row of Table 2, [see results](#idr-results).
@@ -116,7 +129,7 @@ python evaluation/eval.py  --conf ./confs/H3D_fixed_cameras_X.conf --scan_id SCA
       <th>head</th>
    </tr>
    <tr>
-      <td>Eduard</td>
+      <td>Paper</td>
       <td>3.52</td>
       <td>17.04</td>
       <td>2.14</td>
@@ -153,3 +166,10 @@ python evaluation/eval.py  --conf ./confs/H3D_fixed_cameras_X.conf --scan_id SCA
 - In manipulating the data we made an erorr assigning the correct name of the images (e.g. img_0001 --> img_0010 not img_00010). We had to generate the data all again and some had to do training over as well.
 
 
+## Contributions
+
+Alon - Training, Reproduced model Landmarks, Final Results Processing 
+Denniz - Training, Evaluation requirements, Setting up google cloud
+Max - training, data pre-processing, wrote introduction
+Renjie - Training, data pre-processing
+ 
