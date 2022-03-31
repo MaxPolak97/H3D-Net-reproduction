@@ -143,8 +143,8 @@ python evaluation/eval.py  --conf ./confs/H3D_fixed_cameras_X.conf --scan_id SCA
    </tr>
 </table>
 <div class="nav3" style="">
-   <img src="README_images/scanresult.png" alt="Scan result" width="300"/><img src="README_images/eval.jpeg" alt="Evaluation process" width="300"/>
-   <img src="README_images/results.jpeg" alt="Evaluation results" width="600"/>
+   <img src="README_images/scanresult.png" alt="Scan result" width="350" height="350"/><img src="README_images/eval.jpeg" alt="Evaluation process" width="350" height="350"/>
+   <img src="README_images/results.jpeg" alt="Evaluation results" width="700"/>
 </div>
 
 ## Blunders we made on the run
