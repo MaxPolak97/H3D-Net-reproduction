@@ -130,18 +130,19 @@ python evaluation/eval.py  --conf ./confs/H3D_fixed_cameras_X.conf --scan_id SCA
    </tr>
    <tr>
       <td>Ours</td>
-      <td></td>
-      <td></td>
-      <td></td>
-      <td></td>
-      <td></td>
-      <td></td>
-      <td></td>
-      <td></td>
-      <td></td>
-      <td></td>
+      <td>2.84</td>
+      <td>14.22</td>
+      <td>1.96</td>
+      <td>9.59</td>
+      <td>1.77</td>
+      <td>8.12</td>
+      <td>1.37</td>
+      <td>6.63</td>
+      <td>1.22</td>
+      <td>5.76</td>
    </tr>
 </table>
+<img src="README_images/results.jpeg" alt="Results" width="400"/>
 
 ## Blunders we made on the run
 - Training and evaluating should have been done in order (or otherwise use the timestamp). Each sample with all their views take around 2 hours which had to be done again for some of us.
