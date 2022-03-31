@@ -94,7 +94,7 @@ python evaluation/eval.py  --conf ./confs/H3D_fixed_cameras_X.conf --scan_id SCA
 
 ### IDR Results
 
-<table style="width:700">
+<table style="width:700px">
    <tr>
       <th rowspan="2">Producer</th>
       <th colspan="2">View3</th>
