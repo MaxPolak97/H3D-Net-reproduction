@@ -142,7 +142,7 @@ python evaluation/eval.py  --conf ./confs/H3D_fixed_cameras_X.conf --scan_id SCA
       <td>5.76</td>
    </tr>
 </table>
-<img src="README_images/scanresult.png" alt="Scan result" width="400"/><img src="README_images/eval.jpeg" alt="Evaluation process" width="400"/>
+<img src="README_images/scanresult.png" alt="Scan result" width="300"/><img src="README_images/eval.jpeg" alt="Evaluation process" width="300"/>
 <img src="README_images/results.jpeg" alt="Evaluation results" width="600"/>
 
 
