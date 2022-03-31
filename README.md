@@ -94,7 +94,7 @@ python evaluation/eval.py  --conf ./confs/H3D_fixed_cameras_X.conf --scan_id SCA
 
 ### IDR Results
 
-<table style="width:700px">
+<table>
    <tr>
       <th rowspan="2">Producer</th>
       <th colspan="2">View3</th>
@@ -143,8 +143,8 @@ python evaluation/eval.py  --conf ./confs/H3D_fixed_cameras_X.conf --scan_id SCA
    </tr>
 </table>
 <div>
-   <img src="README_images/scanresult.png" alt="Scan result" width="350" height="350"/><img src="README_images/eval.jpeg" alt="Evaluation process" width="350" height="350"/>
-   <img src="README_images/results.jpeg" alt="Evaluation results" width="700"/>
+   <img src="README_images/scanresult.png" alt="Scan result" width="360" height="350"/><img src="README_images/eval.jpeg" alt="Evaluation process" width="360" height="350"/>
+   <img src="README_images/results.jpeg" alt="Evaluation results" width="720"/>
 </div>
 
 ## Blunders we made on the run
