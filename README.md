@@ -1,5 +1,8 @@
 # H3D-Net-Reproduction
-The goal of this blog post is to present and describe our implementation to reproduce the deep learning paper “H3D-Net: Few-Shot High-Fidelity 3D Head Reconstruction” using Pytorch. We are doing this for an assignment of the course CS4240 Deep Learning (2021/22 Q3) at Delft University of Technology.  
+The goal of this blog post is to present and describe our implementation to reproduce the deep learning paper “H3D-Net: Few-Shot High-Fidelity 3D Head Reconstruction” using Pytorch. We are doing this for an assignment of the course CS4240 Deep Learning (2021/22 Q3) at Delft University of Technology.
+
+To view this blog post online, please click on this link:  
+https://hackmd.io/@Group3-H3D-Net/BJqxCkmm9
   
 This paper introduces a new high-fidelity full 3D head reconstruction method called H3D-Net that outperforms state-of-the-art models, such as MVFNet, DFNRMVS and IDR, in the few-shot (3 views) scenario. The H3D-Net utilizes both DeepSDF (a learned shape prior) and IDR (fine-tuning details) to achieve fast high-fidelity 3D face reconstruction from 2D images with different views. Please check the papers for more background information about DeepSDF and IDR. 
 
@@ -42,7 +45,7 @@ Learning 3D reconstructed shapes from 2D images is a fundamental computer vision
 ### 1. Neural Radiance Field (NeRF)
 The NeRF algorithm represents a scene using a fully-connected deep neural network, whose input is a single continuous 5D coordinate (spatial location (x,y,z) and viewing direction (θ,ϕ)) and whose output is the volume density and view-dependent emitted radiance at that spatial location [^1]. The views are synthesized by querying 5D coordinates along camera rays and use volume rendering techniques to project the output colors and densities into an image.
 
-![](https://i.imgur.com/Zp7XOn9.jpg)
+![](https://i.imgur.com/Zp7XOn9.jpg)  
 *Figure 1: NeRF*  
 
 
@@ -50,7 +53,7 @@ The NeRF algorithm represents a scene using a fully-connected deep neural networ
 ### 2. Implicit surface Differentiable Renderer (IDR)
 The IDR algorithm is a neural network architecture that simultaneously learns the following three unknowns: (1) the geometry of the scene, represented by parameters $\theta$; (2) the unknown camera parameters, represented by $\tau$; (3) and the light and reflectance properties from the surface towards the camera approximated surface rendering technique [^2], represented by $\gamma$. 
 
-![](https://i.imgur.com/49OdDHo.jpg)
+![](https://i.imgur.com/49OdDHo.jpg)  
 *Figure 2: IDR Architecture* 
 
 c = camera position, v = viewing direction, x = surface point, n = normal to the surface
@@ -83,7 +86,7 @@ The SDF computes the shortest distance between a 3D point and some 2D surface as
 
 DeepSDF is based on a learned continuous Signed Distance Function (SDF) representation of a class of shapes that predicts the implicit surface location and enables high quality shape representation [^4]. 
 
-![](https://i.imgur.com/qEN56U7.png)
+![](https://i.imgur.com/qEN56U7.png)  
 *Figure 3: DeepSDF*  
 
 ### 4. Few-Shot High-Fidelity 3D Head Reconstruction (H3D-Net)
@@ -101,7 +104,7 @@ DeepSDF is based on a learned continuous Signed Distance Function (SDF) represen
 
 The image below shows the process used by H3D-Net. The training and inference process (3D Prior), which uses DeepSDF to learn a prior model, is shown on the left side. The reconstruction process is illustraited on the right side, that uses the learned prior as a starting point for the IDR implementation, to get the finer details of the 3D model.
 
-![](https://i.imgur.com/aKPPEg3.jpg)
+![](https://i.imgur.com/aKPPEg3.jpg)  
 *Figure 4: H3D-Net implementation*
 
 
@@ -115,7 +118,7 @@ One thing to note is that by the end of this reproducibility project we will hav
 ## Google Cloud Platform Setup
 For cloud computing, we used 4 deeplearning virtual machine instances, one per group member, with a Nvidia Tesla K80 GPU and a CPU with 30GB memory. A list of the specs of all the hardware from the virtual machine can be seen in Figure 5. 
 
-![](https://i.imgur.com/EAjG4ol.png)
+![](https://i.imgur.com/EAjG4ol.png)  
 *Figure 5: Google Cloud Platform Setup*
 
 
@@ -200,12 +203,12 @@ The exact method used to manually annotate the 3D reconstructions with the landm
 
 FreeCAD link: https://www.freecadweb.org/
 
-![](https://i.imgur.com/Yn4PKg8.png)
+![](https://i.imgur.com/Yn4PKg8.png)  
 *Figure 6: Landmarks*[^5] 
 
 Figure 7 shows a 3D reconstruction scan using 32 views in FreeCAD, before the landmarks were located. All scan landmark coordinates can be found in `./idr_eval_results/reconstructions/idr/H3DS_ID_coordinates.txt`
 
-![](https://i.imgur.com/Jsq7763.jpg)
+![](https://i.imgur.com/Jsq7763.jpg)  
 *Figure 7: FreeCAD*
 
 
@@ -286,7 +289,7 @@ The results below are achieved by training the IDR method on the same 10 scans t
 
 The results of the overall evaluation between the IDR methods meshes and the ground truth meshes from the H3DS paper are shown in Figure 9.
 
-![](https://i.imgur.com/SkduKZL.jpg)
+![](https://i.imgur.com/SkduKZL.jpg)  
 *Figure 9: Evaluation Output from PyCharm*
 
 <!--- <img src="README_images/results.jpeg" alt="Evaluation results" width="720"/> --->
@@ -295,7 +298,7 @@ Figure 10 below shows the final face and head results obtained from one of the 3
 
 You can observe how the quality and detail of the 3D reconstruction improves as the number of views is increased.
 
-![](https://i.imgur.com/lkWz2yW.jpg)
+![](https://i.imgur.com/lkWz2yW.jpg)  
 *Figure 10: FreeCAD*
 
 As we can see from these results, we can confirm that the IDR results from the second last row of Table 2 are very similar. The reason for some of the differences in values could be due to the landmarks technique used.
