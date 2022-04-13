@@ -186,6 +186,6 @@ if __name__ == "__main__":
     #     output_dir=args.output_dir)
 
     main(h3ds_path='../../h3ds_v0.2',
-         h3ds_token='4ce4d22168adeeefe6a1ec1d738fac4d',
+         h3ds_token='',
          method='idr',
          output_dir="../../idr_eval_results")
